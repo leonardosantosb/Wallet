@@ -1,21 +1,24 @@
-import { receiveMoedasSuccess, requestMoedas } from '../actions';
+import { REQUEST_MOEDAS_SUCCESS, REQUEST_MOEDAS } from '../actions';
 
 const INITIAL_STATE = {
-  wallet: '',
+  currencies: [],
+  expenses: [],
+  editor: false,
+  idToEdit: 0,
   isFething: false,
 };
 
 const wallet = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case requestMoedas:
+  case REQUEST_MOEDAS:
     return {
       ...state,
       isFething: true,
     };
-  case receiveMoedasSuccess:
+  case REQUEST_MOEDAS_SUCCESS:
     return {
       ...state,
-      wallet: action.payload.currencies,
+      currencies: Object.keys(action.payload),
       isFething: false,
     };
   default:

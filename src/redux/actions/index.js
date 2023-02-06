@@ -24,12 +24,11 @@ export const requestMoedas = () => ({
 
 export const receiveMoedasSuccess = (currencies) => ({
   type: REQUEST_MOEDAS_SUCCESS,
-  payload: {
+  payload:
     currencies,
-  },
 });
 
-const fetchMoedas = async (dispatch) => {
+export const fetchMoedas = () => async (dispatch) => {
   try {
     dispatch(requestMoedas());
     const moedas = await getMoedasApi();
@@ -38,5 +37,3 @@ const fetchMoedas = async (dispatch) => {
     console.log(error);
   }
 };
-
-export const actionFetchMoedas = () => fetchMoedas;
