@@ -4,6 +4,7 @@ export const ADD_USER = 'ADD_USER';
 export const ADD_WALLET = 'ADD_WALLET';
 export const REQUEST_MOEDAS = 'REQUEST_MOEDAS';
 export const REQUEST_MOEDAS_SUCCESS = 'REQUEST_MOEDAS_SUCCESS';
+export const SAVE_TASKS = 'SAVE_TASKS';
 
 export const addUser = (email, password) => ({
   type: ADD_USER,
@@ -37,3 +38,9 @@ export const fetchMoedas = () => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const savetasks = (tasks) => ({
+  type: SAVE_TASKS,
+  payload:
+    tasks,
+});

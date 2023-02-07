@@ -1,4 +1,4 @@
-import { REQUEST_MOEDAS_SUCCESS, REQUEST_MOEDAS } from '../actions';
+import { REQUEST_MOEDAS_SUCCESS, REQUEST_MOEDAS, SAVE_TASKS } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -19,6 +19,12 @@ const wallet = (state = INITIAL_STATE, action) => {
     return {
       ...state,
       currencies: Object.keys(action.payload),
+      isFething: false,
+    };
+  case SAVE_TASKS:
+    return {
+      ...state,
+      expenses: [...state.expenses, action.payload],
       isFething: false,
     };
   default:
