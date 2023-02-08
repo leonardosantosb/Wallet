@@ -3,6 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 class Table extends Component {
+  removeButton = () => {
+    const diminuiArr = -1;
+    const { expenses } = this.props;
+    const newArr = [...expenses];
+    newArr.slice(0, diminuiArr);
+    return newArr;
+  };
+
   render() {
     const { expenses } = this.props;
     return (
@@ -48,7 +56,14 @@ class Table extends Component {
                 Real
               </td>
               <td>
-                valor Editar/Excluir
+                <button
+                  data-testid="delete-btn"
+                  type="button"
+                  onClick={ this.removeButton }
+                >
+                  Excluir
+
+                </button>
               </td>
             </tr>
           )) }
