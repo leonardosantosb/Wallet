@@ -1,4 +1,5 @@
-import { REQUEST_MOEDAS_SUCCESS, REQUEST_MOEDAS, SAVE_TASKS } from '../actions';
+import { REQUEST_MOEDAS_SUCCESS,
+  REQUEST_MOEDAS, SAVE_TASKS, BUTTON_REMOVE } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -26,6 +27,11 @@ const wallet = (state = INITIAL_STATE, action) => {
       ...state,
       expenses: [...state.expenses, action.payload],
       isFething: false,
+    };
+  case BUTTON_REMOVE:
+    return {
+      ...state,
+      expenses: state.expenses.filter(({ id }) => id !== Number(action.payload)),
     };
   default:
     return state;
